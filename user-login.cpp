@@ -4,7 +4,7 @@ Full Name  : Lomia Wu
 Student ID : 116492182
 Email      : rwu30@myseneca.ca
 Section    : DBS_211_NHH
-Date       : 2022-08-04
+Date       : 2022-08-05
 Module	   : User Module, Login Module
 Declaration: I have implemented all by myself and only copied the code that
              my professor provided to complete my project milestones.
@@ -47,22 +47,40 @@ int main() {
 // Definitions
 void printHeader() {
     cout << "---------- Seneca Library Database Management System ----------" << endl;
-    cout << "                  DBS211 Group #3 Project DEMO" << endl;
+    cout << "           DBS211 Group #3 Project DEMO        Date: 2022-08-10" << endl;
     cout << endl;
 }
 
 void menu() {
     int selection = -1;
+    bool invalid = false;
     do {
         // print the menu items
         cout << " 1 - Login Report" << endl;
         cout << " 2 - User Report" << endl;
+        cout << " 3 - Book Report" << endl;
+        cout << " 4 - Loan Report" << endl;
+        cout << " 5 - Fine Report" << endl;
         cout << " 0 - Exit" << endl;
     
         // get the client' selection
-        cout << " >";
-        cin >> selection;
-    
+        do {
+            invalid = false;
+            cout << "Enter your selection:";
+            cin >> selection;
+            if (!cin.good()) {
+                cin.clear();
+                cin.ignore(1000, '\n');
+                cout << "Invalid input, try again." << endl;
+                invalid = true;
+            }
+            else if (selection < 0 || selection > 5) {
+                cout << "Invalid number, try again." << endl;
+                invalid = true;
+            }
+            cout << endl;
+        } while (invalid);
+
         // call the get() fucntion based on the selection
         switch (selection) {
             case 1:
@@ -70,8 +88,15 @@ void menu() {
                 break;
             case 2:
                 getLoginInfo();
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            case 5:
+                break;
         }
-        
+        cout << endl;
     } while (selection != 0);
 }
 
@@ -80,11 +105,11 @@ void getUserInfo() {
     try {
         env = Environment::createEnvironment(Environment::DEFAULT);
         conn = env->createConnection(username, password, srv);
-
+        
         // Report #1 User Report
         Statement* stmt = conn->createStatement();
-        ResultSet* rs = stmt->executeQuery("SELECT user_id, first_name, last_name, email, system_id, type_id FROM libraryuser ORDER BY first_name");
-
+        ResultSet* rs = stmt->executeQuery("SELECT user_id, first_name, last_name, email, login_id, type_id FROM libraryuser ORDER BY first_name");
+        
         cout << "------------------------ Report 1 (Library User Report) ---------------------" << endl;
         cout << "User ID      First Name    Last Name   Email                 Login ID    Type" << endl;
         cout << "----------   -----------   ---------   -------------------   ---------   ----" << endl;
@@ -93,7 +118,6 @@ void getUserInfo() {
                 << setw(9) << rs->getString(3) << "   " << setw(19) << rs->getString(4) << "   " << setw(9)
                 << rs->getInt(5) << "   " << rs->getInt(6) << endl;
         }
-        cout << endl;
         conn->terminateStatement(stmt); // Terminate statement
 
         // Terminate the connections
@@ -116,15 +140,14 @@ void getLoginInfo() {
         Statement* stmt = conn->createStatement();
         ResultSet* rs = stmt->executeQuery("SELECT login_id, last_access_date, active, username, password FROM login ORDER BY login_id");
 
-        cout << "------------------------ Report 2 (Library Lgoin Report) ---------------------" << endl;
+        cout << "------------------------ Report 2 (Library Lgoin Report) ------------" << endl;
         cout << "Login ID   Login Date         Active   Username           Password" << endl;
-        cout << "--------   ----------------   ------   ----------------   --------------------" << endl;
+        cout << "--------   ----------------   ------   ----------------   -----------" << endl;
         while (rs->next()) {
             cout << setw(8) << left << rs->getInt(1) << "   " << setw(16) << rs->getString(2) << "   "
                 << setw(6) << rs->getString(3) << "   " << setw(16) << rs->getString(4) << "   "
                 << rs->getString(5) << endl;
         }
-        cout << endl;
         conn->terminateStatement(stmt); // Terminate statement
 
         // Terminate the connections
