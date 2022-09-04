@@ -1,14 +1,9 @@
 /******************************************************************************
                           Group #3 Project - Milestone 2
 Full Name  : Lomia Wu, Zhonghui Liu, Zijun Li
-Student ID : 116492182, 162383210, 170055214
-Email      : rwu30@myseneca.ca, zliu182@myseneca.ca, zli319@myseneca.ca
-Section    : DBS_211_NHH
 Date       : 2022-08-10
 Module	   : User Module, Login Module, Book Report Module, Loan Report Module,
              Fine Report Module
-Declaration: I have implemented all by myself and only copied the code that
-             my professor provided to complete my project milestones.
 ******************************************************************************/
 #include <iostream>
 #include <iomanip>
@@ -25,17 +20,17 @@ Environment* env = nullptr;
 Connection* conn = nullptr;
 
 // User Variables - Global
-const string username = "dbs211_222h18";  // Lomia Wu
-const string password = "29128324";       // Lomia Wu
+const string username = "";  // Lomia Wu
+const string password = "";       // Lomia Wu
 const string srv = "myoracle12c.senecacollege.ca:1521/oracle12c";
 
-// const string username = "dbs211_222h37"; // Zhonghui Liu 
-// const string password = "29603309"; // Zhonghui Liu
-// const string srv = "myoracle12c.senecacollege.ca:1521/oracle12c";
+// const string username = ""; // Zhonghui Liu 
+// const string password = ""; // Zhonghui Liu
+// const string srv = "";
 
-// const string username = "dbs211_222h41"; // Zijun Li 
-// const string password = "21002142"; // Zijun Li
-// const string srv = "myoracle12c.senecacollege.ca:1521/oracle12c";
+// const string username = ""; // Zijun Li 
+// const string password = ""; // Zijun Li
+// const string srv = "";
 
 // Prototypes
 void printHeader();   // Print the header
