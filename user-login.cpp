@@ -1,9 +1,6 @@
 /******************************************************************************
 						  Group #3 Project - Milestone 2
 Full Name  : Lomia Wu
-Student ID : 116492182
-Email      : rwu30@myseneca.ca
-Section    : DBS_211_NHH
 Date       : 2022-08-04
 Module	   : User Module, Login Module
 Declaration: I have implemented all by myself and only copied the code that
@@ -24,9 +21,9 @@ Environment* env = nullptr;
 Connection* conn = nullptr;
 
 // User Variables - Global
-const string username = "dbs211_222h18";  // Lomia Wu
-const string password = "29128324";       // Lomia Wu
-const string srv = "myoracle12c.senecacollege.ca:1521/oracle12c";
+const string username = "";  // Lomia Wu
+const string password = "";       // Lomia Wu
+const string srv = "";
 
 // Prototypes
 void printHeader();   // Print the header
